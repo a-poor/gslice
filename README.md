@@ -1,6 +1,8 @@
 # gslice
 
 [![Go Test](https://github.com/a-poor/gslice/actions/workflows/go-test.yml/badge.svg)](https://github.com/a-poor/gslice/actions/workflows/go-test.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/a-poor/gslice.svg)](https://pkg.go.dev/github.com/a-poor/gslice)
+
 
 _created by Austin Poor_
 
