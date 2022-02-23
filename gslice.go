@@ -8,6 +8,34 @@ var (
 	ErrOutOfRange = errors.New("index out of range")
 )
 
+// min returns the smallest of the given values.
+func min(a int, bs ...int) int {
+	smallest := a
+	for _, b := range bs {
+		if b < smallest {
+			smallest = b
+		}
+	}
+	return smallest
+}
+
+// max returns the largest of the given values.
+func max(a int, bs ...int) int {
+	largest := a
+	for _, b := range bs {
+		if b > largest {
+			largest = b
+		}
+	}
+	return largest
+}
+
+// clipIndex returns the given index, clipped to the range [minI, maxI].
+// It can be used to ensure that an index is within the bounds of a slice.
+func clipIndex(i, minI, maxI int) int {
+	return min(max(i, minI), maxI)
+}
+
 // AppendAt inserts the element (or elements) at the given index.
 // If the index is out of range, an error is returned.
 //
@@ -39,5 +67,13 @@ func MustAppendAt[T any](slice []T, index int, elems ...T) []T {
 		panic(err)
 	}
 	return result
+}
+
+// SplitAt splits the given slice at the given index.
+// If the index is out of range (to the left or right), no error
+// will be returned, instead that split will be empty.
+func SplitAt[T any](slice []T, index int) ([]T, []T) {
+	s := clipIndex(index, 0, len(slice))
+	return slice[:s], slice[s:]
 }
 
