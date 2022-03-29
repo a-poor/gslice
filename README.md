@@ -8,5 +8,3 @@ _created by Austin Poor_
 
 A Go library with utility functions for working with slices, utilizing generics (introduced in Go 1.18).
 
-_Note: GH Actions won't work until Go 1.18 is available through `actions/setup-go`._
-
